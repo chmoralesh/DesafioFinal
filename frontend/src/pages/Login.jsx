@@ -73,50 +73,54 @@ const Login = () => {
   };
 
   return (
-    <Form
-      className="container pt-5"
-      action="submit"
-      onSubmit={(e) => handleSubmit(e)}
-    >
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Dirección email</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Ingrese su email"
-          value={email}
-          onChange={(e) => handleChangeEmail(e)}
-          autoComplete="username"
-        />
-        <Form.Text className="text-muted">
-          {errorEmail ? (
-            <p className="text-danger">El email no puede estar vacio</p>
-          ) : null}
-        </Form.Text>
-      </Form.Group>
+    <>
+      <Form
+        className="container pt-5"
+        action="submit"
+        onSubmit={(e) => handleSubmit(e)}
+      >
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Dirección email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Ingrese su email"
+            value={email}
+            onChange={(e) => handleChangeEmail(e)}
+            autoComplete="username"
+          />
+          <Form.Text className="text-muted">
+            {errorEmail ? (
+              <p className="text-danger">El email no puede estar vacio</p>
+            ) : null}
+          </Form.Text>
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword1">
-        <Form.Label>Contraseña</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Ingrese su contraseña"
-          value={password}
-          onChange={(e) => handleChangePass1(e)}
-          autoComplete="current-password"
-        />
-        <Form.Text className="text-muted">
-          {errorPassword ? (
-            <p className="text-danger">
-              La contraseña debe tener mas de 6 caracteres y no puede estar
-              vacía
-            </p>
-          ) : null}
-        </Form.Text>
-      </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword1">
+          <Form.Label>Contraseña</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Ingrese su contraseña"
+            value={password}
+            onChange={(e) => handleChangePass1(e)}
+            autoComplete="current-password"
+          />
+          <Form.Text className="text-muted">
+            {errorPassword ? (
+              <p className="text-danger">
+                La contraseña debe tener mas de 6 caracteres y no puede estar
+                vacía
+              </p>
+            ) : null}
+          </Form.Text>
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Enviar
-      </Button>
-    </Form>
+        <Button variant="primary" type="submit">
+          Enviar
+        </Button>
+      </Form>
+      <div className="container mt-5">Super User = contacto@test.cl</div>
+      <div className="container ">Password = 123456</div>
+    </>
   );
 };
 

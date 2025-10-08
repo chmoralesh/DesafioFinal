@@ -1,7 +1,8 @@
 import {
   createUserModel,
-  destroyPostModel,
+  destroyUserModel,
   getUsersModel,
+  setUserModel,
 } from "../models/auth.model.js";
 
 export const registerUser = async (req, res) => {
@@ -17,6 +18,26 @@ export const registerUser = async (req, res) => {
   }
 };
 
+//UPDATE (PUT)
+//PUT
+export const updateUSER = async (req, res) => {
+  try {
+    const { email, password, type, name } = req.body;
+    const post = await setUserModel({
+      email,
+      password,
+      type,
+      name,
+    });
+    res
+      .status(200)
+      .json({ message: `Se modificó el usuario con email: ${email}` });
+  } catch (error) {
+    res.status(500).json({ error: "Error interno del servidor al hacer PUT" });
+    console.log("Error => ", error);
+  }
+};
+
 export const getUserController = async (req, res) => {
   const email = req.user; // Asumiendo que el middleware verifyToken añade el usuario al request
   try {
@@ -28,10 +49,12 @@ export const getUserController = async (req, res) => {
   }
 };
 
+//Delete
+
 export const deletePost = async (req, res) => {
   try {
     const { email } = req.params;
-    const deletedCount = await destroyPostModel(email);
+    const deletedCount = await destroyUserModel(email);
     if (deletedCount === 0) {
       return res.status(404).json({ error: "Email no encontrado" });
     }

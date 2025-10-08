@@ -10,25 +10,25 @@ const Register = () => {
   const registerData = {
     title: "Formulario de registro de usuarios",
     color: "success",
-    isEdit: true,
+    viewAll: true,
     buttonText: "Registrar nuevo usuario",
-    emailIsList: false,
+    isEdit: false,
   };
   // Datos para personalizar el formulario de modificación de usuario
   const editData = {
     title: "Formulario de edición de usuarios",
     color: "warning",
-    isEdit: true,
+    viewAll: true,
     buttonText: "Editar usuario",
-    emailIsList: true,
+    isEdit: true,
   };
   // Datos para formulario de eliminación de usuario
   const deleteData = {
     title: "Formulario de eliminación de usuarios",
     color: "danger",
-    isEdit: false,
+    viewAll: false,
     buttonText: "Eliminar usuario",
-    emailIsList: true,
+    isEdit: false,
   };
 
   return (

@@ -1,11 +1,11 @@
 [
   {
     "id": "A1",
-    "name": "Alta Temperatura Motor Principal",
+    "name": "Alta Temperatura Motor Secundario",
     "type": "NC",
     "delay": 2000,
     "inhibit": false,
-    "state": 5,
+    "state": 2,
     "group": 1
   },
   {

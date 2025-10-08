@@ -10,9 +10,9 @@ const UserForm = ({ customizedData = {} }) => {
   const {
     title = "",
     color = "",
-    viewAll = false,
-    buttonText = "",
     isEdit = false,
+    buttonText = "",
+    emailIsList = false,
   } = customizedData;
 
   const { handleRegister } = useContext(UserContext);
@@ -196,7 +196,7 @@ const UserForm = ({ customizedData = {} }) => {
                     ) : null}
                   </Form.Text>
                 </Form.Group>
-                {viewAll ? (
+                {isEdit ? (
                   <Form.Group className="mb-3" controlId="formBasicPassword1">
                     <Form.Label>Nombre de Usuario</Form.Label>
                     <Form.Control
@@ -217,7 +217,7 @@ const UserForm = ({ customizedData = {} }) => {
                 ) : (
                   ""
                 )}
-                {viewAll ? (
+                {isEdit ? (
                   <Form.Group className="mb-3" controlId="formBasicPassword1">
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control
@@ -240,7 +240,7 @@ const UserForm = ({ customizedData = {} }) => {
                   ""
                 )}
 
-                {viewAll ? (
+                {isEdit ? (
                   <Form.Group className="mb-3" controlId="formBasicPassword2">
                     <Form.Label>Confirmar contraseña</Form.Label>
                     <Form.Control
@@ -261,7 +261,7 @@ const UserForm = ({ customizedData = {} }) => {
                 ) : (
                   ""
                 )}
-                {viewAll ? (
+                {isEdit ? (
                   <Form.Group className="mb-3" controlId="formBasicUserType">
                     <Form.Label>Selecciona el tipo de usuario</Form.Label>
                     <Form.Select

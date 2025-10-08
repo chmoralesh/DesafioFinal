@@ -37,7 +37,7 @@ export const getUsersModel = async (email) => {
 };
 
 //Delete
-export const destroyPostModel = async (email) => {
+export const destroyUserModel = async (email) => {
   const sqlQuery = {
     text: "DELETE FROM usuarios WHERE email = $1",
     values: [email],
@@ -46,8 +46,24 @@ export const destroyPostModel = async (email) => {
   return result.rowCount;
 };
 
-export const authModel = {
-  createUserModel,
-  findUserByEmailModel,
-  getUsersModel,
+//PUT
+export const setUserModel = async ({ email, password, type, name }) => {
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  const SQLquery = {
+    text: `
+      UPDATE usuarios
+      SET password = $1, type = $2, name = $3
+      WHERE email = $4
+      RETURNING email, type, name
+    `,
+    values: [hashedPassword, type, name, email],
+  };
+
+  const response = await pool.query(SQLquery);
+  if (response.rowCount === 0) {
+    throw new Error("No se encontró un usuario con ese email");
+  }
+
+  return response.rows[0];
 };

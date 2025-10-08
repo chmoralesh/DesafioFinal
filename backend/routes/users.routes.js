@@ -3,6 +3,7 @@ import {
   deletePost,
   getUserController,
   registerUser,
+  updateUSER,
 } from "../src/controllers/users.controller.js";
 import { verifyToken } from "../middlewares/verifyToken.middleware.js";
 
@@ -12,5 +13,6 @@ const router = Router();
 router.post("/register", registerUser);
 router.get("/me", verifyToken, getUserController);
 router.delete("/delete/:email", deletePost);
+router.put("/update/:email", updateUSER);
 
 export default router;

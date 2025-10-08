@@ -1,4 +1,17 @@
 CREATE DATABASE projectalarms;
 \c projectalarms;
-CREATE TABLE usuarios ( id SERIAL, email VARCHAR(50) NOT NULL, password
+CREATE TABLE usuarios ( id SERIAL, email VARCHAR(50) NOT NULL UNIQUE, password
 VARCHAR(60) NOT NULL, type VARCHAR(25) NOT NULL, name VARCHAR(25) NOT NULL );
+
+CREATE TABLE alarmas (
+    id_num SERIAL NOT NULL,
+    id VARCHAR(10) GENERATED ALWAYS AS ('A' || id_num) STORED NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    type VARCHAR(10) NOT NULL,
+    delay INTEGER NOT NULL DEFAULT 0,
+    inhibit BOOLEAN NOT NULL DEFAULT FALSE,
+    state INTEGER NOT NULL DEFAULT 0,
+    "group" INTEGER NOT NULL,
+    PRIMARY KEY (id_num)
+);
+
