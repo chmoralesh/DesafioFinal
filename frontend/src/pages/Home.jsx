@@ -44,7 +44,7 @@ const Home = () => {
 
       <Container fluid className="mt-3">
         <Container fluid className="mt-2">
-          <Row>
+          <Row className="g-3">
             {grupos.map((grupo) => (
               <Col md={alarmWidth} key={grupo.id}>
                 <p className="group">{grupo.name}</p>
