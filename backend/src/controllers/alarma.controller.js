@@ -3,6 +3,7 @@ import {
   destroyAlarmModel,
   getAlarmsModel,
   setAlarmModel,
+  setStateModel,
 } from "../models/alarma.model.js";
 
 //NUEVO-----------------------
@@ -51,6 +52,23 @@ export const updateAlarm = async (req, res) => {
       group,
     });
     res.status(200).json({ message: `Se modificó la alarma con id: ${id}` });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Error interno del servidor al actualizar alarma" });
+    console.log("Error => ", error);
+  }
+};
+//PUT para actualizar state
+export const updateState = async (req, res) => {
+  console.log(req.body);
+  try {
+    const { id, state } = req.body;
+    const post = await setStateModel({
+      id,
+      state,
+    });
+    res.status(200).json({ message: `Se el estado con id: ${id}` });
   } catch (error) {
     res
       .status(500)

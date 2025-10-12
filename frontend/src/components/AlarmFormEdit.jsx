@@ -139,6 +139,7 @@ const AlarmFormEdit = ({ customizedData = {} }) => {
           name,
           type,
           delay,
+          state: null,
           inhibit: inhibitValue,
           group: groupIndex,
           id: alarmId,

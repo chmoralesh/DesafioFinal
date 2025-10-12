@@ -9,9 +9,10 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/users.routes.js";
 import checkoutRoute from "./routes/checkout.route.js";
 import alarmaRoute from "./routes/alarma.route.js";
+import mqttRoute from "./routes/mqtt.route.js";
 import "dotenv/config";
+import "./src/services/mqtt.js";
 
-import { readFileSync } from "fs";
 const PORT = process.env.PORT || 5000;
 
 export const loadAlarmas = async () => {
@@ -26,11 +27,6 @@ export const loadAlarmas = async () => {
     throw error;
   }
 };
-// const loadAlarmas = () => {
-//   return JSON.parse(
-//     readFileSync(new URL("./db/alarmas.json", import.meta.url))
-//   );
-// };
 
 const app = express();
 
@@ -41,9 +37,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/alarmas", alarmaRoute);
 app.use("/api/checkouts", checkoutRoute);
+app.use("/api/mqtt", mqttRoute);
 app.use((_, res) => {
   res.status(404).json({ error: "Not Found" });
 });
+
 //websockets
 
 // Crear servidor HTTP a partir de Express
@@ -75,20 +73,6 @@ setInterval(async () => {
   }
 }, 1000);
 
-// io.on("connection", (socket) => {
-//   console.log("Cliente conectado:", socket.id);
-
-//   // Enviar datos iniciales
-//   socket.emit("updateAlarmas", loadAlarmas());
-// });
-
-// setInterval(() => {
-//   io.emit("updateAlarmas", loadAlarmas());
-// }, 1000);
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port http://localhost:${PORT}`);
-// });
 httpServer.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

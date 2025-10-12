@@ -51,6 +51,26 @@ export const setAlarmModel = async ({
   }
   return response.rows[0];
 };
+//PUT para actualizar estados
+export const setStateModel = async ({ id, state }) => {
+  if (!id) throw new Error("ID de alarma requerido");
+
+  const SQLquery = {
+    text: `
+      UPDATE alarmas
+      SET state = $2
+      WHERE id = $1
+      RETURNING id, state
+    `,
+    values: [id, state],
+  };
+
+  const response = await pool.query(SQLquery);
+  if (response.rowCount === 0) {
+    throw new Error("No se pudo modificar la alarma");
+  }
+  return response.rows[0];
+};
 
 //Delete
 export const destroyAlarmModel = async (id) => {
