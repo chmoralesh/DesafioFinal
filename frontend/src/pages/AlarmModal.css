@@ -27,3 +27,18 @@
     box-shadow: 0 0 15px red;
   }
 }
+
+@media (max-width: 991px) {
+  .titles {
+    display: none;
+  }
+  .state-mobile {
+    padding-left: 2em;
+    background-color: aqua;
+  }
+  .row-edit {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+  }
+}

@@ -29,12 +29,13 @@ export const Profile = () => {
     <>
       <div className="container mt-5">
         <Card>
-          <Card.Header className="d-flex justify-content-center ">
+          <Card.Header className="d-flex justify-content-center">
             <h4>Mi Perfil</h4>
           </Card.Header>
           <Card.Body>
             <Container className="d-flex justify-content-center pb-3">
-              <div className="w-50 border rounded bg-success ">
+              {/* Contenedor de la tabla */}
+              <div className="border rounded p-2 w-100 w-md-50 mx-auto">
                 <Table className="m-0">
                   <tbody>
                     <tr>
@@ -60,40 +61,37 @@ export const Profile = () => {
               </div>
             </Container>
 
-            <Card.Footer className="d-flex ">
-              <Container className="me-3">
-                <Row>
-                  <Col md={2}>
-                    {" "}
-                    <NavLink to="/register" className={"w-100"}>
-                      {userValidated ? (
-                        <Button className={`rounded `} variant="primary">
-                          Editar Usuarios
-                        </Button>
-                      ) : (
-                        ""
-                      )}
-                    </NavLink>
-                  </Col>
-                  <Col md={2}>
-                    {" "}
-                    <NavLink to="/alarmas" className={"w-100"}>
-                      {userValidated ? (
-                        <Button className={`rounded `} variant="primary">
-                          Editar Alarmas
-                        </Button>
-                      ) : (
-                        ""
-                      )}
-                    </NavLink>
-                  </Col>
-                  <Col md={8} className="d-flex justify-content-end">
-                    <NavLink to="/" onClick={logout}>
-                      <Button variant="danger">Cerrar Sesión</Button>
-                    </NavLink>
-                  </Col>
-                </Row>
-              </Container>
+            <Card.Footer>
+              <Row className="g-2">
+                <Col xs={12} md={2}>
+                  <NavLink to="/register" className="w-100">
+                    {userValidated && (
+                      <Button className="w-100 rounded" variant="primary">
+                        Editar Usuarios
+                      </Button>
+                    )}
+                  </NavLink>
+                </Col>
+
+                <Col xs={12} md={2}>
+                  <NavLink to="/alarmas" className="w-100">
+                    {userValidated && (
+                      <Button className="w-100 rounded" variant="primary">
+                        Editar Alarmas
+                      </Button>
+                    )}
+                  </NavLink>
+                </Col>
+                <Col xs={0} md={6}></Col>
+
+                <Col xs={12} md={2} className="d-flex justify-content-end">
+                  <NavLink to="/" className="w-100 w-md-auto" onClick={logout}>
+                    <Button className="w-100 w-md-auto" variant="danger">
+                      Cerrar Sesión
+                    </Button>
+                  </NavLink>
+                </Col>
+              </Row>
             </Card.Footer>
           </Card.Body>
         </Card>

@@ -144,8 +144,8 @@ export const AlarmModal = () => {
             border="primary"
           >
             {/* -------Card Header------- */}
-            <Card className="  bg-primary bg-opacity-10  rounded-top">
-              <Row>
+            <Card className="  bg-primary bg-opacity-10  rounded-top titles">
+              <Row className="">
                 <Col md={4} className="pt-2">
                   <p>Descripción</p>
                 </Col>
@@ -159,15 +159,17 @@ export const AlarmModal = () => {
             </Card>
             {/* -------Card Estado------- */}
             <Card className=" mt-1">
-              <Row>
+              <Row className="row-edit">
                 <Col md={4} className="pt-2">
                   <p>Estado</p>
                 </Col>
                 <Col
                   md={4}
-                  className={`border-0 rounded-top pt-2 border-start border-end text-white ${
+                  className={`border-0 rounded-top pt-2 border-start border-end text-white  ${
                     values.state === 2 ? "blink-border" : ""
-                  } ${ColorStateAlarms(values.state).backgroundColor}`}
+                  } ${
+                    ColorStateAlarms(values.state).backgroundColor
+                  } state-mobile`}
                 >
                   <p className={` `}>{selectedState}</p>
                 </Col>
@@ -265,18 +267,21 @@ export const AlarmModal = () => {
       </Modal.Body>
       <Modal.Footer>
         <Container>
-          <Row>
-            <Col md={3} className="text-start">
+          <Row className="g-2">
+            <Col xs={12} md={3} className="text-start ">
               <Button
+                className="w-100 w-md-auto "
                 variant="secondary"
                 onClick={() => acknowledgeAlarm(idUp)}
               >
                 Acusar Alarma
               </Button>
             </Col>
-            <Col md={9} className="text-end">
+            <Col md={5}></Col>
+            <Col xs={12} md={4} className="text-end">
               {token ? (
                 <Button
+                  className="w-100 w-md-auto"
                   variant="secondary"
                   onClick={() => acknowledgeAlarm(idUp)}
                 >
@@ -286,12 +291,6 @@ export const AlarmModal = () => {
                 ""
               )}
             </Col>
-            {/* <Col md={3} className="text-center"></Col>
-            <Col md={2} className="text-end">
-              <Button variant="secondary" onClick={() => navigate(-1)}>
-                Cerrar
-              </Button>
-            </Col> */}
           </Row>
         </Container>
       </Modal.Footer>
