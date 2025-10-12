@@ -21,6 +21,7 @@ const App = () => {
   return (
     <>
       <Navbars />
+
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={token ? <Register /> : <Home />} />

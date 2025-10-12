@@ -1,5 +1,43 @@
-.menu {
+/* .menu {
   width: 100%;
   height: 4em;
-  /* border: 2px solid red; */
+  
+} */
+
+@media (min-width: 992px) {
+  /* Sticky solo en desktop */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .menu-button {
+    width: 8em;
+    height: 4em;
+  }
+  .last-button {
+    width: 16em;
+    height: 4em;
+  }
+  .menu {
+    padding-left: 4em;
+  }
+}
+.link {
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  /* Mobile: collapse empuja contenido */
+  .navbar-collapse {
+    position: relative !important; /* evita que flote sobre contenido */
+  }
+  .menu-button {
+    width: 100%;
+    height: 3em;
+  }
+  .last-button {
+    width: 100%;
+    height: 3em;
+  }
 }
