@@ -11,6 +11,7 @@ import { Pagina404 } from "./pages/404";
 import { useContext } from "react";
 import { TokenContext } from "./contexts/TokenContext";
 import { AlarmModal } from "./pages/AlarmModal";
+import Alarms from "./pages/Alarms";
 
 const App = () => {
   const { token } = useContext(TokenContext);
@@ -25,7 +26,8 @@ const App = () => {
         <Route path="/register" element={token ? <Register /> : <Home />} />
         <Route path="/login" element={token ? <Home /> : <Login />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/alarms/:code" element={<Alarm />} />
+        <Route path="/alarmas/:code" element={<Alarm />} />
+        <Route path="/alarmas/" element={token ? <Alarms /> : <Login />} />
         <Route path="/profile" element={token ? <Profile /> : <Login />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
@@ -33,7 +35,7 @@ const App = () => {
       {/* Modal sobre la página de fondo */}
       {state?.backgroundLocation && (
         <Routes>
-          <Route path="/alarms/:code" element={<AlarmModal />} />
+          <Route path="/alarmas/:code" element={<AlarmModal />} />
         </Routes>
       )}
 

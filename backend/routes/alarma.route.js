@@ -1,9 +1,16 @@
 import { Router } from "express";
-import { alarmaController } from "../src/controllers/alarma.controller.js";
+import {
+  deleteAlarm,
+  getAlarmsController,
+  registerAlarm,
+  updateAlarm,
+} from "../src/controllers/alarma.controller.js";
 
 const router = Router();
 
-router.get("/", alarmaController.readAlarmas);
-router.get("/:id", alarmaController.readAlarma);
+router.get("/", getAlarmsController);
+router.put("/update", updateAlarm);
+router.post("/register", registerAlarm);
+router.delete("/delete", deleteAlarm);
 
 export default router;

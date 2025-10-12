@@ -77,7 +77,7 @@ export const Profile = () => {
                   </Col>
                   <Col md={2}>
                     {" "}
-                    <NavLink to="/register" className={"w-100"}>
+                    <NavLink to="/alarmas" className={"w-100"}>
                       {userValidated ? (
                         <Button className={`rounded `} variant="primary">
                           Editar Alarmas

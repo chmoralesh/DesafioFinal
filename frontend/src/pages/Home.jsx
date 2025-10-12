@@ -8,127 +8,60 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useState, useContext } from "react";
 import "./Home.css";
 import { WebSocketContext } from "../contexts/WebSocketProvider";
+import { groupsRender } from "../utils/OptionsInputs";
 
 const Home = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
   const { data } = useContext(WebSocketContext);
-  const [array, setArray] = useState([]);
+  const [values, setValues] = useState([]);
 
   const callApi = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
-    setArray(data);
+    setValues(data);
   };
 
   useEffect(() => {
-    try {
-      callApi(`${apiUrl}/alarmas`);
-    } catch (error) {
-      console.log(error);
-    }
+    callApi(`${apiUrl}/alarmas`);
   }, []);
 
-  const values = data.length > 0 ? data : array;
+  // Actualiza values cada vez que cambie el WS
+  useEffect(() => {
+    if (data && data.length > 0) {
+      setValues(data);
+    }
+  }, [data]);
 
-  // Definir el ancho de cada columna
   const alarmWidth = 2;
 
+  const grupos = groupsRender;
+
   return (
-    <>
-      <div>
-        <div className="w-100 d-flex flex-column align-items-center text-white">
-          <h2 className="mt-3">Resumen de Alarmas Generales</h2>
-        </div>
-
-        <Container fluid className="mt-3">
-          <Container fluid className="mt-2">
-            <Row>
-              {/* Primera lista */}
-              <Col md={alarmWidth}>
-                <p className="group">Motor Principal</p>
-                {values.map((e) =>
-                  e.group === 1 ? (
-                    <div key={e.id} className="mt-2">
-                      <CardAlarm id={e.id} name={e.name} state={e.state} />
-                    </div>
-                  ) : (
-                    ""
-                  )
-                )}
-              </Col>
-
-              {/* Segunda lista */}
-              <Col md={alarmWidth}>
-                <p className="group">Caja Reductora</p>
-                {values.map((e) =>
-                  e.group === 2 ? (
-                    <div key={e.id} className="mt-2">
-                      <CardAlarm id={e.id} name={e.name} state={e.state} />
-                    </div>
-                  ) : (
-                    ""
-                  )
-                )}
-              </Col>
-              {/* Primera lista */}
-              <Col md={alarmWidth}>
-                <p className="group">Sistema Electrico</p>
-                {values.map((e) =>
-                  e.group === 3 ? (
-                    <div key={e.id} className="mt-2">
-                      <CardAlarm id={e.id} name={e.name} state={e.state} />
-                    </div>
-                  ) : (
-                    ""
-                  )
-                )}
-              </Col>
-
-              {/* Segunda lista */}
-              <Col md={alarmWidth}>
-                <p className="group">Niveles de Estanques</p>
-                {values.map((e) =>
-                  e.group === 4 ? (
-                    <div key={e.id} className="mt-2">
-                      <CardAlarm id={e.id} name={e.name} state={e.state} />
-                    </div>
-                  ) : (
-                    ""
-                  )
-                )}
-              </Col>
-              {/* Primera lista */}
-              <Col md={alarmWidth}>
-                <p className="group">Sentinas</p>
-                {values.map((e) =>
-                  e.group === 5 ? (
-                    <div key={e.id} className="mt-2">
-                      <CardAlarm id={e.id} name={e.name} state={e.state} />
-                    </div>
-                  ) : (
-                    ""
-                  )
-                )}
-              </Col>
-
-              {/* Segunda lista */}
-              <Col md={alarmWidth}>
-                <p className="group">Miscelaneos</p>
-                {values.map((e) =>
-                  e.group === 6 ? (
-                    <div key={e.id} className="mt-2">
-                      <CardAlarm id={e.id} name={e.name} state={e.state} />
-                    </div>
-                  ) : (
-                    ""
-                  )
-                )}
-              </Col>
-            </Row>
-          </Container>
-        </Container>
+    <div>
+      <div className="w-100 d-flex flex-column align-items-center text-white">
+        <h2 className="mt-3">Resumen de Alarmas Generales</h2>
       </div>
-    </>
+
+      <Container fluid className="mt-3">
+        <Container fluid className="mt-2">
+          <Row>
+            {grupos.map((grupo) => (
+              <Col md={alarmWidth} key={grupo.id}>
+                <p className="group">{grupo.name}</p>
+                {values
+                  .filter((e) => e.group === grupo.id)
+                  .map((e) => (
+                    <div key={e.id} className="mt-2">
+                      <CardAlarm id={e.id} name={e.name} state={e.state} />
+                    </div>
+                  ))}
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </Container>
+    </div>
   );
 };
+
 export default Home;

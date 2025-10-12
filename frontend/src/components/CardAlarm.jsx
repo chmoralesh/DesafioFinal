@@ -10,7 +10,7 @@ const CardAlarm = ({ id, name, state }) => {
 
   return (
     <Link
-      to={`/alarms/${id}`}
+      to={`/alarmas/${id}`}
       state={{ backgroundLocation: location }}
       className={`w-100 no-decoration `}
     >

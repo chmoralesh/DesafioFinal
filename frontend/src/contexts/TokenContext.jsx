@@ -6,7 +6,7 @@ export const TokenContext = createContext();
 //creo y exporto al proveedor
 
 const TokenProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(false);
 
   return (
     <TokenContext.Provider value={{ token, setToken }}>

@@ -78,7 +78,7 @@ const Navbars = () => {
                       md={2}
                       className=" d-flex justify-content-center align-items-center "
                     >
-                      <NavLink to="/" className={"w-100"}>
+                      <NavLink to="/Mppl" className={"w-100"}>
                         {({ isActive }) => (
                           <Button
                             className={`rounded menu ${
@@ -95,7 +95,7 @@ const Navbars = () => {
                       md={2}
                       className=" d-flex justify-content-center align-items-center "
                     >
-                      <NavLink to="/" className={"w-100"}>
+                      <NavLink to="/disp1" className={"w-100"}>
                         {({ isActive }) => (
                           <Button
                             className={`rounded menu ${
@@ -112,7 +112,7 @@ const Navbars = () => {
                       md={2}
                       className=" d-flex justify-content-center align-items-center "
                     >
-                      <NavLink to="/" className={"w-100"}>
+                      <NavLink to="/disp2" className={"w-100"}>
                         {({ isActive }) => (
                           <Button
                             className={`rounded menu ${
@@ -212,7 +212,16 @@ const Navbars = () => {
             </Container>
           </Col>
           <Col md={4} className=" justify-content-center">
-            <NavLink to="/cart" className={"w-100 "}>
+            <Button
+              className={`w-100 rounded text-white
+                  `}
+              variant="outline-light"
+            >
+              <RelojDigital />
+              AQUÍ ESTARÁ LA ÚLTIMA ALARMA ACTIVA NO ACUSADA
+            </Button>
+
+            {/* <NavLink to="/cart" className={"w-100 "}>
               {({ isActive }) => (
                 <Button
                   className={`w-100 rounded ${
@@ -224,7 +233,7 @@ const Navbars = () => {
                   🛒 Total: ${miles(TotalCalc(cart))}
                 </Button>
               )}
-            </NavLink>
+            </NavLink> */}
           </Col>
         </Row>
       </Container>

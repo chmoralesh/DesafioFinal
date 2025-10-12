@@ -39,7 +39,7 @@ export const updateUSER = async (req, res) => {
 };
 
 export const getUserController = async (req, res) => {
-  const email = req.user; // Asumiendo que el middleware verifyToken añade el usuario al request
+  const email = req.user;
   try {
     const users = await getUsersModel(email);
     return res.status(200).json(users);

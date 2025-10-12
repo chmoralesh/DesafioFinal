@@ -9,14 +9,28 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/users.routes.js";
 import checkoutRoute from "./routes/checkout.route.js";
 import alarmaRoute from "./routes/alarma.route.js";
+import "dotenv/config";
 
 import { readFileSync } from "fs";
+const PORT = process.env.PORT || 5000;
 
-const loadAlarmas = () => {
-  return JSON.parse(
-    readFileSync(new URL("./db/alarmas.json", import.meta.url))
-  );
+export const loadAlarmas = async () => {
+  try {
+    const response = await fetch(`http://localhost:${PORT}/api/alarmas`);
+    if (!response.ok) throw new Error("Error al obtener alarmas");
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al cargar las alarmas:", error);
+    throw error;
+  }
 };
+// const loadAlarmas = () => {
+//   return JSON.parse(
+//     readFileSync(new URL("./db/alarmas.json", import.meta.url))
+//   );
+// };
 
 const app = express();
 
@@ -40,18 +54,38 @@ const io = new Server(httpServer, {
   cors: { origin: "http://localhost:5173" }, // <- React normalmente corre en 3000
 });
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   console.log("Cliente conectado:", socket.id);
 
   // Enviar datos iniciales
-  socket.emit("updateAlarmas", loadAlarmas());
+  try {
+    const alarmas = await loadAlarmas();
+    socket.emit("updateAlarmas", alarmas);
+  } catch (error) {
+    console.error("Error al cargar alarmas:", error);
+  }
 });
 
-setInterval(() => {
-  io.emit("updateAlarmas", loadAlarmas());
+setInterval(async () => {
+  try {
+    const alarmas = await loadAlarmas();
+    io.emit("updateAlarmas", alarmas);
+  } catch (error) {
+    console.error("Error al cargar alarmas:", error);
+  }
 }, 1000);
 
-const PORT = process.env.PORT || 5000;
+// io.on("connection", (socket) => {
+//   console.log("Cliente conectado:", socket.id);
+
+//   // Enviar datos iniciales
+//   socket.emit("updateAlarmas", loadAlarmas());
+// });
+
+// setInterval(() => {
+//   io.emit("updateAlarmas", loadAlarmas());
+// }, 1000);
+
 // app.listen(PORT, () => {
 //   console.log(`Server is running on port http://localhost:${PORT}`);
 // });

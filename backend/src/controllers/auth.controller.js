@@ -17,7 +17,7 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: "No autorizado" });
     }
     const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-      expiresIn: "180s",
+      expiresIn: "300s",
     });
     return res.status(200).json({ message: "Inicio de sesión exitoso", token });
   } catch (error) {

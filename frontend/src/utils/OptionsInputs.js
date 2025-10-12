@@ -22,3 +22,14 @@ export const stateOptions = [
   "Auto-bloqueo",
   "Desconocido",
 ];
+export const groupsRender = [
+  { id: 1, name: "Motor Principal" },
+  { id: 2, name: "Caja Reductora" },
+  { id: 3, name: "Sistema Electrico" },
+  { id: 4, name: "Niveles de Estanques" },
+  { id: 5, name: "Sentinas" },
+  { id: 6, name: "Miscelaneos" },
+];
+export const groupsOptions = Object.values(groupsRender).map(
+  (item) => item.name
+);
