@@ -178,7 +178,7 @@ export const AlarmModal = () => {
             </Card>
             {/* -------Card Delay------- */}
             <Card className=" mt-1">
-              <Row>
+              <Row className="row-edit">
                 <Col md={4} className="pt-2">
                   <p>{`Delay [ms]`}</p>
                 </Col>
@@ -206,7 +206,7 @@ export const AlarmModal = () => {
             </Card>
             {/* -------Card Inhibir------- */}
             <Card className=" mt-1">
-              <Row>
+              <Row className="row-edit">
                 <Col md={4} className="pt-2">
                   <p>Inhibir</p>
                 </Col>
@@ -236,7 +236,7 @@ export const AlarmModal = () => {
             </Card>
             {/* -------Card Tipo------- */}
             <Card className=" mt-1">
-              <Row>
+              <Row className="row-edit">
                 <Col md={4} className="pt-2">
                   <p>Tipo de señal</p>
                 </Col>
