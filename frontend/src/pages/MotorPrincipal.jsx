@@ -47,7 +47,7 @@ const MotorPrincipal = () => {
   return (
     <>
       <div className="w-100 d-flex flex-column align-items-center text-white">
-        <h2 className="mt-3 text-center">{`Resumen de Alarmas de ${grupo.name}`}</h2>
+        <h2 className="mt-3 text-center titleGroup">{`Resumen de Alarmas de ${grupo.name}`}</h2>
       </div>
       <Container fluid>
         <Row>

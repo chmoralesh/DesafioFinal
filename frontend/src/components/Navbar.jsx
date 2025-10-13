@@ -165,18 +165,15 @@ const Navbars = () => {
               </Col>
             </Row>
           </Nav>
-
-          {/* Sección derecha con reloj */}
-          <Nav className="ms-auto d-flex align-items-center mt-3 mt-lg-0">
-            <Button
-              className="w-100 rounded text-white"
-              variant="outline-light"
-            >
-              <RelojDigital />
-              AQUÍ ESTARÁ LA ÚLTIMA ALARMA ACTIVA NO ACUSADA
-            </Button>
-          </Nav>
         </Navbar.Collapse>
+
+        {/* Sección derecha con reloj */}
+        <Nav className="ms-auto d-flex align-items-center mt-3 mt-lg-0">
+          <Button className="w-100 rounded text-white" variant="outline-light">
+            <RelojDigital />
+            AQUÍ ESTARÁ LA ÚLTIMA ALARMA ACTIVA NO ACUSADA
+          </Button>
+        </Nav>
       </Container>
     </Navbar>
   );
