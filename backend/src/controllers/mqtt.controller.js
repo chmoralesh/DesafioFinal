@@ -3,12 +3,12 @@ import { publishMQTT } from "../services/mqtt.js";
 export const ackAlarm = async (req, res) => {
   console.log(req.body);
   try {
-    const { id } = req.body;
+    const { id, state } = req.body;
     if (!id) {
       return res.status(400).json({ error: "Falta el parámetro id" });
     }
 
-    await publishMQTT("desafiolatam/logs", { id });
+    await publishMQTT("desafiolatam/logs", { id, state });
     res.status(200).json({ message: `Se acusó la alarma con id: ${id}` });
   } catch (error) {
     res

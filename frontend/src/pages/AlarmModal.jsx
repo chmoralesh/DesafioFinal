@@ -58,15 +58,15 @@ export const AlarmModal = () => {
     }
   };
 
-  const acknowledgeAlarm = async (idUp) => {
+  const acknowledgeAlarm = async (idUp, state) => {
     try {
-      const response = await fetch(`${apiUrl}/acknowledge`, {
+      const response = await fetch(`${apiUrl}/mqtt/ack`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: idUp }),
+        body: JSON.stringify({ id: idUp, state }),
       });
-      alert("Alarma reconocida");
-      console.log(response.status);
+      //alert("Alarma reconocida");
+      //console.log(response.status);
     } catch (error) {
       console.log("Error al reconocer la alarma", error);
     }
@@ -272,7 +272,7 @@ export const AlarmModal = () => {
               <Button
                 className="w-100 w-md-auto "
                 variant="secondary"
-                onClick={() => acknowledgeAlarm(idUp)}
+                onClick={() => acknowledgeAlarm(idUp, values.state)}
               >
                 Acusar Alarma
               </Button>
@@ -283,7 +283,7 @@ export const AlarmModal = () => {
                 <Button
                   className="w-100 w-md-auto"
                   variant="secondary"
-                  onClick={() => acknowledgeAlarm(idUp)}
+                  onClick={() => acknowledgeAlarm(idUp, values.state)}
                 >
                   Agregar a Modificaciones
                 </Button>
