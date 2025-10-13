@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { TokenContext } from "./contexts/TokenContext";
 import { AlarmModal } from "./pages/AlarmModal";
 import Alarms from "./pages/Alarms";
+import MotorPrincipal from "./pages/MotorPrincipal";
 
 const App = () => {
   const { token } = useContext(TokenContext);
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/alarmas/:code" element={<Alarm />} />
         <Route path="/alarmas/" element={token ? <Alarms /> : <Login />} />
+        <Route path="/mppl" element={<MotorPrincipal />} />
         <Route path="/profile" element={token ? <Profile /> : <Login />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>

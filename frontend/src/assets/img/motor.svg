@@ -1,0 +1,188 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Motor Diesel Marino Industrial Detallado</title>
+  <desc>Un diagrama SVG de un motor de barco con detalles industriales, sombreado y texturas.</desc>
+
+  <defs>
+    <linearGradient id="mainBodyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(240,100,0);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgb(220,80,0);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(180,60,0);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="headGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(255,150,80);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(200,100,50);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(180,180,180);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgb(150,150,150);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(120,120,120);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="darkMetalGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(80,80,80);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(40,40,40);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="copperGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(200,100,50);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(150,70,30);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="panelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(255,220,0);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(200,180,0);stop-opacity:1" />
+    </linearGradient>
+
+    <pattern id="fineGrid" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M 6 0 L 0 0 L 0 6" fill="none" stroke="#666" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="ventGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 8 0 L 0 0 L 0 8" fill="none" stroke="#aaa" stroke-width="1"/>
+    </pattern>
+
+    <filter id="hardShadow">
+      <feDropShadow dx="3" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+    <filter id="inset">
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur stdDeviation="1" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="black" flood-opacity="0.6" result="shadow"/>
+      <feComposite operator="in" in="shadow" in2="inverse"/>
+      <feComposite operator="over" in="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <style>
+    /* Colores base que puedes personalizar */
+    .base-montaje-color   { fill: #37474f; stroke: #263238; }
+    .cuerpo-motor-color   { fill: url(#mainBodyGradient); stroke: #8d2a00; }
+    .culatas-color        { fill: url(#headGradient); stroke: #993300; }
+    .cubierta-culatas-color { fill: url(#darkMetalGradient); stroke: #424242; }
+    .multiple-escape-color{ fill: url(#metalGradient); stroke: #616161; }
+    .turbo-carcasa-color  { fill: url(#metalGradient); stroke: #424242; }
+    .turbina-color        { fill: #212121; }
+    .admision-color       { fill: url(#darkMetalGradient); stroke: #5d4037; }
+    .inyectores-color     { fill: #424242; stroke: #212121; }
+    .caja-control-color   { fill: url(#panelGradient); stroke: #ffab00; }
+    .panel-display-color  { fill: #37474f; stroke: #263238; }
+    .boton-color          { fill: #78909c; stroke: #455a64; }
+    .tuberias-color       { fill: none; stroke: url(#copperGradient); }
+    .cables-color         { fill: none; stroke: #a327d4; }
+    .volante-inercia-color{ fill: url(#darkMetalGradient); stroke: #424242; }
+    .radiador-color       { fill: #4caf50; stroke: #2e7d32; }
+    .ventilador-color     { fill: url(#metalGradient); stroke: #455a64; }
+    .poleas-engranajes-color { fill: #616161; stroke: #424242; }
+    .bomba-color          { fill: #424242; stroke: #212121; }
+    .filtro-color         { fill: url(#metalGradient); stroke: #424242; }
+
+    /* Estilos generales (no cambiar a menos que se quiera modificar el aspecto general) */
+    .line-detail          { stroke: #333; stroke-width: 1; fill: none; opacity: 0.6; }
+    .text-label           { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; fill: #eee; }
+    .indicator-light      { fill: #ff0000; stroke: #a00; stroke-width: 1; }
+  </style>
+
+  <rect class="base-montaje-color" x="60" y="600" width="1080" height="50" rx="10" filter="url(#hardShadow)"/>
+  
+  <rect class="cuerpo-motor-color" x="120" y="320" width="800" height="280" rx="15" filter="url(#hardShadow)"/>
+  <rect class="cuerpo-motor-color" x="110" y="450" width="20" height="150" rx="5"/> <rect class="cuerpo-motor-color" x="900" y="450" width="20" height="150" rx="5"/> <circle class="volante-inercia-color" cx="980" cy="450" r="140" filter="url(#hardShadow)"/>
+  <circle fill="#212121" cx="980" cy="450" r="40"/>
+  <rect fill="#212121" x="975" y="310" width="10" height="100" rx="2"/> <rect fill="#212121" x="975" y="550" width="10" height="100" rx="2"/> <path class="line-detail" d="M 980 310 L 980 590" stroke-width="15" stroke-linecap="round"/>
+  <path class="line-detail" d="M 900 450 L 970 450" stroke-width="15" stroke-linecap="round"/>
+
+  <g class="culatas-group" filter="url(#softShadow)">
+    <rect class="culatas-color" x="150" y="250" width="100" height="80" rx="8"/>
+    <rect class="culatas-color" x="270" y="250" width="100" height="80" rx="8"/>
+    <rect class="culatas-color" x="390" y="250" width="100" height="80" rx="8"/>
+    <rect class="culatas-color" x="510" y="250" width="100" height="80" rx="8"/>
+    <rect class="culatas-color" x="630" y="250" width="100" height="80" rx="8"/>
+    <rect class="culatas-color" x="750" y="250" width="100" height="80" rx="8"/>
+
+    <rect class="cubierta-culatas-color" x="160" y="260" width="80" height="60" rx="5"/>
+    <rect class="cubierta-culatas-color" x="280" y="260" width="80" height="60" rx="5"/>
+    <rect class="cubierta-culatas-color" x="400" y="260" width="80" height="60" rx="5"/>
+    <rect class="cubierta-culatas-color" x="520" y="260" width="80" height="60" rx="5"/>
+    <rect class="cubierta-culatas-color" x="640" y="260" width="80" height="60" rx="5"/>
+    <rect class="cubierta-culatas-color" x="760" y="260" width="80" height="60" rx="5"/>
+
+    <circle class="inyectores-color" cx="195" cy="285" r="6"/>
+    <circle class="inyectores-color" cx="315" cy="285" r="6"/>
+    <circle class="inyectores-color" cx="435" cy="285" r="6"/>
+    <circle class="inyectores-color" cx="555" cy="285" r="6"/>
+    <circle class="inyectores-color" cx="675" cy="285" r="6"/>
+    <circle class="inyectores-color" cx="795" cy="285" r="6"/>
+    <path class="cables-color" d="M 195 295 L 195 310 L 180 310" stroke-width="2"/>
+    <path class="cables-color" d="M 315 295 L 315 310 L 300 310" stroke-width="2"/>
+    <path class="cables-color" d="M 435 295 L 435 310 L 420 310" stroke-width="2"/>
+    <path class="cables-color" d="M 555 295 L 555 310 L 540 310" stroke-width="2"/>
+    <path class="cables-color" d="M 675 295 L 675 310 L 660 310" stroke-width="2"/>
+    <path class="cables-color" d="M 795 295 L 795 310 L 780 310" stroke-width="2"/>
+  </g>
+
+  <rect class="multiple-escape-color" x="130" y="180" width="600" height="60" rx="10" filter="url(#softShadow)"/>
+  <rect class="multiple-escape-color" x="700" y="190" width="50" height="40" rx="5"/>
+  <circle fill="#424242" cx="160" cy="210" r="10"/>
+  <circle fill="#424242" cx="280" cy="210" r="10"/>
+  <circle fill="#424242" cx="400" cy="210" r="10"/>
+  <circle fill="#424242" cx="520" cy="210" r="10"/>
+  <circle fill="#424242" cx="640" cy="210" r="10"/>
+
+  <g filter="url(#hardShadow)">
+    <circle class="turbo-carcasa-color" cx="800" cy="240" r="80"/>
+    <circle class="turbina-color" cx="800" cy="240" r="45"/>
+    <circle class="turbo-carcasa-color" cx="800" cy="380" r="60"/>
+    <circle class="turbina-color" cx="800" cy="380" r="30"/>
+    <path class="line-detail" d="M 750 200 L 750 300 M 850 200 L 850 300"/>
+    <path class="line-detail" d="M 770 200 L 770 280 M 830 200 L 830 280"/>
+    <rect class="turbo-carcasa-color" x="750" y="290" width="100" height="60" rx="5"/>
+    <path class="multiple-escape-color" d="M 730 210 C 740 180, 780 160, 800 160 L 870 160 C 900 160, 920 180, 920 210 L 920 250 C 920 280, 900 300, 870 300 L 800 300 C 780 300, 740 280, 730 250 Z" filter="url(#softShadow)"/>
+  </g>
+
+  <rect class="admision-color" x="130" y="320" width="700" height="70" rx="10" filter="url(#softShadow)"/>
+  <rect class="admision-color" x="140" y="390" width="40" height="150" rx="8"/>
+  <rect class="admision-color" x="780" y="390" width="40" height="150" rx="8"/>
+  <rect class="admision-color" x="450" y="390" width="40" height="150" rx="8"/> <path class="line-detail" d="M 150 390 L 150 540 M 790 390 L 790 540 M 470 390 L 470 540"/>
+
+  <path class="tuberias-color" d="M 110 500 C 80 480, 80 430, 110 410 C 140 390, 150 380, 180 370" stroke-width="5" stroke-linejoin="round"/>
+  <path class="tuberias-color" d="M 200 500 C 180 480, 180 430, 210 410 C 240 390, 250 380, 280 370" stroke-width="5" stroke-linejoin="round"/>
+  <path class="tuberias-color" d="M 850 400 C 880 380, 880 330, 850 310 C 820 290, 810 280, 780 270" stroke-width="5" stroke-linejoin="round"/>
+  <path class="tuberias-color" d="M 850 500 C 880 480, 880 430, 850 410 C 820 390, 810 380, 780 370" stroke-width="5" stroke-linejoin="round"/>
+  
+  <rect class="bomba-color" x="130" y="470" width="80" height="60" rx="5" filter="url(#softShadow)"/>
+  <circle fill="#212121" cx="170" cy="480" r="10"/>
+  <text class="text-label" x="145" y="510" fill="#fff" font-size="12">Oil Pump</text>
+  
+  <rect class="filtro-color" x="230" y="480" width="60" height="80" rx="5" filter="url(#softShadow)"/>
+  <circle fill="#212121" cx="260" cy="490" r="8"/>
+  <text class="text-label" x="240" y="540" fill="#fff" font-size="12">Fuel Filter</text>
+
+  <rect class="caja-control-color" x="280" y="400" width="200" height="120" rx="10" filter="url(#hardShadow)"/>
+  <rect class="panel-display-color" x="295" y="415" width="170" height="40" rx="5" filter="url(#inset)"/>
+  <text x="300" y="440" font-family="monospace" font-size="18" fill="#64ffda">STATUS: OK</text>
+  <circle class="boton-color" cx="330" cy="480" r="10"/>
+  <circle class="boton-color" cx="370" cy="480" r="10"/>
+  <circle class="boton-color" cx="410" cy="480" r="10"/>
+  <circle class="indicator-light" cx="450" cy="425" r="5"/>
+  <text x="325" y="485" font-family="Arial" font-size="12" fill="white">S</text>
+  <text x="365" y="485" font-family="Arial" font-size="12" fill="white">M</text>
+  <text x="405" y="485" font-family="Arial" font-size="12" fill="white">A</text>
+
+  <rect class="radiador-color" x="900" y="320" width="80" height="200" rx="8" filter="url(#hardShadow)"/>
+  <rect class="radiador-color" x="905" y="325" width="70" height="190" fill="url(#ventGrid)"/>
+  <path class="tuberias-color" d="M 900 350 C 880 350, 870 300, 870 280 C 870 260, 880 250, 900 250" stroke-width="6"/>
+  <path class="tuberias-color" d="M 900 480 C 880 480, 870 530, 870 550 C 870 570, 880 580, 900 580" stroke-width="6"/>
+
+  <g filter="url(#softShadow)">
+    <circle class="poleas-engranajes-color" cx="190" cy="550" r="30"/>
+    <circle class="poleas-engranajes-color" cx="190" cy="550" r="15" fill="#424242"/>
+    <circle class="poleas-engranajes-color" cx="280" cy="550" r="25"/>
+    <circle class="poleas-engranajes-color" cx="280" cy="550" r="12" fill="#424242"/>
+    <path class="line-detail" d="M 160 550 L 255 550" stroke-width="10"/>
+    <path class="line-detail" d="M 190 520 L 280 525" stroke-width="8"/>
+    <path class="line-detail" d="M 190 580 L 280 575" stroke-width="8"/>
+  </g>
+
+  <rect x="130" y="330" width="20" height="40" fill="url(#fineGrid)" opacity="0.8"/>
+  <rect x="880" y="330" width="20" height="40" fill="url(#fineGrid)" opacity="0.8"/>
+
+</svg>

@@ -14,7 +14,7 @@ export const Pagina404 = () => {
         <br />
         <Link to="/">
           <Button className="rounded mx-2" variant="outline-success">
-            🍕 Home
+            🏠 Home
           </Button>
         </Link>
       </div>
