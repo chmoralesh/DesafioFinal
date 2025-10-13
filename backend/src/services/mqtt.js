@@ -40,5 +40,32 @@ mqttClient.on("message", async (topic, message) => {
   }
 });
 
+// Función para publicar en cualquier topic
+// const publishMQTT = (topic, data) => {
+//   const payload = JSON.stringify(data);
+//   mqttClient.publish(topic, payload, { qos: 1 }, (err) => {
+//     if (err) console.error(`❌ Error al publicar en ${topic}:`, err);
+//     else console.lo g(`📤 Publicado en ${topic}:`, payload);
+//   });
+// };
+
+export const publishMQTT = (topic, data) => {
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify(data);
+
+    mqttClient.publish(topic, payload, { qos: 1 }, (err) => {
+      if (err) {
+        console.error(`❌ Error al publicar en ${topic}:`, err);
+        reject(err);
+      } else {
+        console.log(`📤 Publicado en ${topic}:`, payload);
+        resolve();
+      }
+    });
+  });
+};
+
+//publishMQTT("desafiolatam/logs", { mensaje: "Sistema iniciado" });
+
 // Exportamos para usar en otros módulos
 export { alarmStates, mqttClient };

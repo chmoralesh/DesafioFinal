@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { alarmStates } from "../src/services/mqtt.js";
+import { ackAlarm } from "../src/controllers/mqtt.controller.js";
 
 const router = Router();
 
@@ -7,5 +8,7 @@ const router = Router();
 router.get("/alarmas", (req, res) => {
   res.json(alarmStates);
 });
+
+router.post("/ack", ackAlarm);
 
 export default router;
