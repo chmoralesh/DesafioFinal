@@ -6,10 +6,7 @@ const Header = () => {
     <>
       <div className="container-header">
         <img className="imgs" src={headerImage} alt="Fondo Pizzas" />
-        <div className="title">
-          <h1>¡Pizzería Mamma Mia!</h1>
-          <p>¡Tenemos las mejores pizzas que podrás encontrar!</p>
-        </div>
+        <div className="title"></div>
       </div>
     </>
   );

@@ -3,9 +3,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <>
-      <p className="footer-text">
-        © 2021 - Pizzería Mamma Mia! - Todos los derechos reservados
-      </p>
+      <p className="footer-text"></p>
     </>
   );
 };

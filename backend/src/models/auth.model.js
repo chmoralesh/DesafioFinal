@@ -48,7 +48,9 @@ export const destroyUserModel = async (email) => {
 
 //PUT
 export const setUserModel = async ({ email, password, type, name }) => {
+  console.log("esto entra al password", password);
   const hashedPassword = bcrypt.hashSync(password, 10);
+  console.log("esto sale hash", hashedPassword);
 
   const SQLquery = {
     text: `

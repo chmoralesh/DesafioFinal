@@ -22,10 +22,11 @@ export const registerUser = async (req, res) => {
 //PUT
 export const updateUSER = async (req, res) => {
   try {
-    const { email, password, type, name } = req.body;
+    const { email, pass1, type, name } = req.body;
+    console.log("esto llega al PUT ", req.body);
     const post = await setUserModel({
       email,
-      password,
+      password: pass1,
       type,
       name,
     });
