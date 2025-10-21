@@ -13,12 +13,25 @@ import { groupsRender } from "../utils/OptionsInputs";
 const Home = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
   const { data } = useContext(WebSocketContext);
-  const [values, setValues] = useState([]);
 
+  const [values, setValues] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // const callApi = async (url) => {
+  //   const response = await fetch(url);
+  //   const data = await response.json();
+  //   setValues(data);
+  // };
   const callApi = async (url) => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setValues(data);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setValues(data);
+    } catch (error) {
+      console.error("Error al cargar alarmas:", error);
+    } finally {
+      setLoading(false); // <-- ya tenemos datos o error
+    }
   };
 
   useEffect(() => {
@@ -29,12 +42,21 @@ const Home = () => {
   useEffect(() => {
     if (data && data.length > 0) {
       setValues(data);
+      setLoading(false);
     }
   }, [data]);
 
   const alarmWidth = 2;
 
   const grupos = groupsRender;
+
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <p>Cargando alarmas...</p>
+      </div>
+    );
+  }
 
   return (
     <div>

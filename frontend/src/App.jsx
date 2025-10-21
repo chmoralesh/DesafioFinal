@@ -13,12 +13,19 @@ import { TokenContext } from "./contexts/TokenContext";
 import { AlarmModal } from "./pages/AlarmModal";
 import Alarms from "./pages/Alarms";
 import MotorPrincipal from "./pages/MotorPrincipal";
+import { UserContext } from "./contexts/UserContext";
+import { useEffect } from "react";
 
 const App = () => {
   const { token } = useContext(TokenContext);
+  const { logout } = useContext(UserContext);
 
   const location = useLocation();
   const state = location.state;
+  useEffect(() => {
+    // Se ejecuta solo una vez al cargar la app
+    logout();
+  }, []);
   return (
     <>
       <Navbars />
