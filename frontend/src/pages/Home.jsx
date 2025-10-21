@@ -5,6 +5,7 @@ import CardAlarm from "../components/CardAlarm";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from "react-bootstrap/Spinner";
 import { useEffect, useState, useContext } from "react";
 import "./Home.css";
 import { WebSocketContext } from "../contexts/WebSocketProvider";
@@ -54,6 +55,18 @@ const Home = () => {
     return (
       <div className="loader-container">
         <p>Cargando alarmas...</p>
+        <div>
+          <>
+            <Spinner animation="border" variant="primary" />
+            <Spinner animation="border" variant="secondary" />
+            <Spinner animation="border" variant="success" />
+            <Spinner animation="border" variant="danger" />
+            <Spinner animation="border" variant="warning" />
+            <Spinner animation="border" variant="info" />
+            <Spinner animation="border" variant="light" />
+            <Spinner animation="border" variant="dark" />
+          </>
+        </div>
       </div>
     );
   }
